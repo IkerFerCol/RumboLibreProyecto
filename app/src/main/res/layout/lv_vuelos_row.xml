@@ -29,7 +29,7 @@
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
+        android:layout_marginLeft="28dp"
         android:gravity="center_vertical"
         android:text="Destino"
         app:layout_constraintBottom_toBottomOf="parent"
