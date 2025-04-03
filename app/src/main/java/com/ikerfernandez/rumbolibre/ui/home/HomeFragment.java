@@ -14,6 +14,7 @@ import retrofit2.Response;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
@@ -25,6 +26,7 @@ import com.ikerfernandez.rumbolibre.databinding.LvVuelosRowBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeFragment extends Fragment {
 
@@ -41,8 +43,9 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         Log.d("AQUI", "AQUI LLEGA");
-        vueloAdapter = new VueloAdapter(getContext(), listaVuelos);
-        binding.listviewvuelos.setAdapter(vueloAdapter);
+        binding.recyclerViewVuelos.setLayoutManager(new LinearLayoutManager(getContext()));
+        vueloAdapter = new VueloAdapter(listaVuelos);
+        binding.recyclerViewVuelos.setAdapter(vueloAdapter);
 
         fetchVuelos();
 
@@ -67,17 +70,19 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<List<Vuelo>> call, Response<List<Vuelo>> response) {
                 if (response.isSuccessful()) {
                     List<Vuelo> vuelos = response.body();
+                    Log.d("VUELOS_SIZE", "Tamaño de la lista de vuelos: " + vuelos.size()); // Añadir este log
+                    listaVuelos.clear();
+                    listaVuelos.addAll(vuelos);
                     for (Vuelo vuelo : vuelos) {
-                        listaVuelos.clear();
-                        listaVuelos.add(vuelo);
-                        vueloAdapter.notifyDataSetChanged();
-                        Log.d("VUELO", "Origen: " + vuelo.getOrigen() + " | Destino: " + vuelo.getDestino() + " | Precio: " + vuelo.getPrecio());
+                        Log.d("VUELO", "Origen " + vuelo.getCiudadOrigen() + " | Destino: " + vuelo.getCiudadDestino() + " | Precio: " + vuelo.getPrecio());
                     }
+                    vueloAdapter.notifyDataSetChanged();
                 } else {
                     Log.e("API_ERROR", "Código: " + response.code());
                 }
                 Log.d("API_SUCCESS", "Vuelos obtenidos: " + listaVuelos.size());
             }
+
 
             @Override
             public void onFailure(Call<List<Vuelo>> call, Throwable t) {

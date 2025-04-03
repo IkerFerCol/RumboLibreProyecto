@@ -1,44 +1,57 @@
 package com.ikerfernandez.rumbolibre;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class VueloAdapter extends ArrayAdapter<Vuelo> {
-    public VueloAdapter(Context context, List<Vuelo> vuelos) {
-        super(context, R.layout.lv_vuelos_row, vuelos);
+public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHolder> {
+
+    private final List<Vuelo> vuelos;
+
+    public VueloAdapter(List<Vuelo> vuelos) {
+        this.vuelos = vuelos;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Vuelo vuelo = getItem(position);
+    public VueloViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.lv_vuelos_row, parent, false);
+        return new VueloViewHolder(view);
+    }
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext())
-                    .inflate(R.layout.lv_vuelos_row, parent, false);
+    @Override
+    public void onBindViewHolder(@NonNull VueloViewHolder holder, int position) {
+        Vuelo vuelo = vuelos.get(position);
+        holder.tvOrigen.setText(vuelo.getCiudadOrigen());
+        holder.tvDestino.setText(vuelo.getCiudadDestino());
+        // Descomenta y adapta estos según tus necesidades:
+        // holder.tvAerolinea.setText(vuelo.getAerolinea());
+        // holder.tvPrecio.setText(String.format("€%.2f", vuelo.getPrecio()));
+        // holder.tvTiempo.setText(vuelo.getTiempo());
+    }
+
+    @Override
+    public int getItemCount() {
+        return vuelos.size();
+    }
+
+    public static class VueloViewHolder extends RecyclerView.ViewHolder {
+        TextView tvOrigen, tvDestino; //, tvAerolinea, tvPrecio, tvTiempo;
+
+        public VueloViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvOrigen = itemView.findViewById(R.id.tvVueloOrigen);
+            tvDestino = itemView.findViewById(R.id.tvVueloDestino);
+            // tvAerolinea = itemView.findViewById(R.id.tvAerolinea);
+            // tvPrecio = itemView.findViewById(R.id.tvPrecio);
+            // tvTiempo = itemView.findViewById(R.id.tvTiempo);
         }
-
-        TextView tvOrigen = convertView.findViewById(R.id.tvVueloOrigen);
-        TextView tvDestino = convertView.findViewById(R.id.tvVueloDestino);
-//        TextView tvAerolinea = convertView.findViewById(R.id.tvAerolinea);
-//        TextView tvPrecio = convertView.findViewById(R.id.tvPrecio);
-//        TextView tvTiempo = convertView.findViewById(R.id.tvTiempo);
-
-        tvOrigen.setText(vuelo.getOrigen());
-        tvDestino.setText(vuelo.getDestino());
-//        tvAerolinea.setText(vuelo.getAerolinea());
-//        tvPrecio.setText(String.format("€%.2f", vuelo.getPrecio()));
-//        tvTiempo.setText(vuelo.getTiempo());
-
-        return convertView;
     }
 }
