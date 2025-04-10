@@ -1,8 +1,12 @@
 package com.ikerfernandez.rumbolibre.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
+import com.ikerfernandez.rumbolibre.SettingsActivity;
 import com.ikerfernandez.rumbolibre.SupabaseApiService;
 import com.ikerfernandez.rumbolibre.Vuelo;
 import com.ikerfernandez.rumbolibre.VueloAdapter;
@@ -33,6 +38,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private List<Vuelo> listaVuelos = new ArrayList<>();
     private VueloAdapter vueloAdapter;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,6 +95,26 @@ public class HomeFragment extends Fragment {
                 Log.e("API_FAIL", "Error: " + t.getMessage());
             }
         });
+    }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            startActivity(new Intent(getActivity(), SettingsActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

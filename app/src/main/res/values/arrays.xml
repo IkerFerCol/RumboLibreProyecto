@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opciones_privacidad">
+        <item>Público</item>
+        <item>Solo amigos</item>
+        <item>Privado</item>
+    </string-array>
+
+    <string-array name="valores_privacidad">
+        <item>publico</item>
+        <item>amigos</item>
+        <item>privado</item>
+    </string-array>
+</resources>

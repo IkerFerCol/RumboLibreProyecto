@@ -32,9 +32,9 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
         holder.tvOrigen.setText(vuelo.getCiudadOrigen());
         holder.tvDestino.setText(vuelo.getCiudadDestino());
         // Descomenta y adapta estos según tus necesidades:
-        // holder.tvAerolinea.setText(vuelo.getAerolinea());
+        holder.tvAerolinea.setText(vuelo.getAerolinea());
         // holder.tvPrecio.setText(String.format("€%.2f", vuelo.getPrecio()));
-        // holder.tvTiempo.setText(vuelo.getTiempo());
+        holder.tvTiempo.setText(vuelo.getTiempoIda());
     }
 
     @Override
@@ -43,15 +43,15 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
     }
 
     public static class VueloViewHolder extends RecyclerView.ViewHolder {
-        TextView tvOrigen, tvDestino; //, tvAerolinea, tvPrecio, tvTiempo;
+        TextView tvOrigen, tvDestino, tvAerolinea, tvTiempo; //, tvAerolinea, tvPrecio, tvTiempo;
 
         public VueloViewHolder(@NonNull View itemView) {
             super(itemView);
             tvOrigen = itemView.findViewById(R.id.tvVueloOrigen);
             tvDestino = itemView.findViewById(R.id.tvVueloDestino);
-            // tvAerolinea = itemView.findViewById(R.id.tvAerolinea);
+            tvAerolinea = itemView.findViewById(R.id.tvAerolinea);
             // tvPrecio = itemView.findViewById(R.id.tvPrecio);
-            // tvTiempo = itemView.findViewById(R.id.tvTiempo);
+            tvTiempo = itemView.findViewById(R.id.tvTiempo);
         }
     }
 }

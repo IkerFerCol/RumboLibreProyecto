@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Ajustes Generales"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            android:key="modo_oscuro"
+            android:title="Modo oscuro"
+            android:summary="Cambiar entre tema claro y oscuro"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Cuenta"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="nombre_usuario"
+            android:title="Nombre de usuario"
+            android:dialogTitle="Cambiar nombre de usuario"
+            android:dialogMessage="Introduce tu nuevo nombre de usuario"
+            android:defaultValue="Usuario"
+            android:inputType="textCapWords" />
+
+        <Preference
+            android:title="Cambiar contraseña"
+            android:summary="Establecer una nueva contraseña">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://tudominio.com/cambiar-password" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Soporte"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:title="Soporte"
+            android:summary="Contacta con nosotros">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://tudominio.com/ayuda" />
+        </Preference>
+
+        <Preference
+            android:title="Acerca de"
+            android:summary="Versión y información de la app">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://tudominio.com/acerca-de" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
