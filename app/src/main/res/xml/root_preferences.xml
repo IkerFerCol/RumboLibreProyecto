@@ -12,6 +12,15 @@
             android:summary="Cambiar entre tema claro y oscuro"
             android:defaultValue="false" />
 
+        <ListPreference
+            android:key="idioma"
+            android:title="Idioma"
+            android:summary="Selecciona el idioma de la aplicación"
+            android:dialogTitle="Elegir idioma"
+            android:defaultValue="es"
+            android:entries="@array/idioma_entradas"
+            android:entryValues="@array/idioma_valores" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
