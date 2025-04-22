@@ -31,7 +31,6 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
         Vuelo vuelo = vuelos.get(position);
         holder.tvOrigen.setText(vuelo.getCiudadOrigen());
         holder.tvDestino.setText(vuelo.getCiudadDestino());
-        // Descomenta y adapta estos según tus necesidades:
         holder.tvAerolinea.setText(vuelo.getAerolinea());
         // holder.tvPrecio.setText(String.format("€%.2f", vuelo.getPrecio()));
         holder.tvTiempo.setText(vuelo.getTiempoIda());

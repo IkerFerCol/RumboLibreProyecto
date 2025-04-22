@@ -1,58 +1,40 @@
 package com.ikerfernandez.rumbolibre;
 
-import com.google.gson.annotations.SerializedName;
 
 public class Vuelo {
-    @SerializedName("id")
     private int id;
 
-    @SerializedName("ciudadorigen")
     private String ciudadOrigen;
 
-    @SerializedName("ciudaddestino")
     private String ciudadDestino;
 
-    @SerializedName("aerolinea")
     private String aerolinea;
 
-    @SerializedName("horainicioida")
     private String horaInicioIda;
 
-    @SerializedName("horafinida")
     private String horaFinIda;
 
-    @SerializedName("fechainicioida")
     private String fechaInicioIda;
 
-    @SerializedName("fechafinida")
     private String fechaFinIda;
 
-    @SerializedName("tiempoida")
     private String tiempoIda;
 
-    @SerializedName("horainiciovuelta")
     private String horaInicioVuelta;
 
-    @SerializedName("horafinvuelta")
     private String horaFinVuelta;
 
-    @SerializedName("fechainiciovuelta")
     private String fechaInicioVuelta;
 
-    @SerializedName("fechafinvuelta")
     private String fechaFinVuelta;
 
-    @SerializedName("tiempovuelta")
     private String tiempoVuelta;
 
-    @SerializedName("precio")
     private double precio;
 
-    // Constructor vacío necesario para Retrofit
     public Vuelo() {
     }
 
-    // Constructor completo
     public Vuelo(int id, String ciudadOrigen, String ciudadDestino, String aerolinea,
                  String horaInicioIda, String horaFinIda, String fechaInicioIda,
                  String fechaFinIda, String tiempoIda, String horaInicioVuelta,
@@ -75,7 +57,6 @@ public class Vuelo {
         this.precio = precio;
     }
 
-    // Getters y Setters (necesarios para Retrofit y Gson)
     public int getId() {
         return id;
     }
