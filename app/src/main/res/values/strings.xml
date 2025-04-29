@@ -29,4 +29,5 @@
         <item>es</item>
         <item>en</item>
     </string-array>
+    <string name="title_vuelosDetails">Detalles del vuelo</string>
 </resources>

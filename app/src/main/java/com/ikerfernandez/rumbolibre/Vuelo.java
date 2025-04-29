@@ -1,7 +1,9 @@
 package com.ikerfernandez.rumbolibre;
 
 
-public class Vuelo {
+import java.io.Serializable;
+
+public class Vuelo implements Serializable {
     private int id;
 
     private String ciudadOrigen;

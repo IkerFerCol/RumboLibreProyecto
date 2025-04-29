@@ -1,5 +1,7 @@
 package com.ikerfernandez.rumbolibre;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ikerfernandez.rumbolibre.databinding.VueloDetailsBinding;
+
 import java.util.List;
 
 public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHolder> {
 
     private final List<Vuelo> vuelos;
+    private Context context;
 
-    public VueloAdapter(List<Vuelo> vuelos) {
+    public VueloAdapter(List<Vuelo> vuelos, Context context) {
         this.vuelos = vuelos;
+        this.context = context;
     }
 
     @NonNull
@@ -34,6 +40,12 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
         holder.tvAerolinea.setText(vuelo.getAerolinea());
         // holder.tvPrecio.setText(String.format("€%.2f", vuelo.getPrecio()));
         holder.tvTiempo.setText(vuelo.getTiempoIda());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, VueloDetailActivity.class);
+            intent.putExtra("vuelo", vuelo);
+            context.startActivity(intent);
+        });
     }
 
     @Override

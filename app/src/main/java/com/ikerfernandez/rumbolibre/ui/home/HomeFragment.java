@@ -47,10 +47,12 @@ public class HomeFragment extends Fragment {
 
         Log.d("AQUI", "AQUI LLEGA");
         binding.recyclerViewVuelos.setLayoutManager(new LinearLayoutManager(getContext()));
-        vueloAdapter = new VueloAdapter(listaVuelos);
+        vueloAdapter = new VueloAdapter(listaVuelos, requireContext());
         binding.recyclerViewVuelos.setAdapter(vueloAdapter);
 
         fetchVuelos();
+
+
 
 
         return root;
