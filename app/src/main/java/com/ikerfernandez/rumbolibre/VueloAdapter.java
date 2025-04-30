@@ -53,6 +53,12 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
         return vuelos.size();
     }
 
+    public void actualizarLista(List<Vuelo> nuevosVuelos) {
+        this.vuelos.clear();
+        this.vuelos.addAll(nuevosVuelos);
+        notifyDataSetChanged();
+    }
+
     public static class VueloViewHolder extends RecyclerView.ViewHolder {
         TextView tvOrigen, tvDestino, tvAerolinea, tvTiempo; //, tvAerolinea, tvPrecio, tvTiempo;
 

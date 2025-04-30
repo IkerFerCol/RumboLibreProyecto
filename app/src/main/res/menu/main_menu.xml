@@ -2,9 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_buscar_vuelos"
+        android:icon="@drawable/search"
+        android:title="Buscar"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_settings"
+        android:icon="@drawable/settingsxxl"
         android:title="Configuración"
-        android:icon="@drawable/settingsimage"
-    app:showAsAction="never"/>
+        app:showAsAction="always" />
+
+
 
 </menu>
