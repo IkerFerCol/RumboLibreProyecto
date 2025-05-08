@@ -142,7 +142,6 @@ public class HomeFragment extends Fragment {
                     listaVuelos.addAll(vuelos);
                     vueloAdapter.notifyDataSetChanged();
 
-                    // Logs para depuración
                     Log.d("API_SUCCESS", "Vuelos obtenidos: " + listaVuelos.size());
                     for (Vuelo vuelo : vuelos) {
                         Log.d("VUELO", "Origen: " + vuelo.getCiudadOrigen() +

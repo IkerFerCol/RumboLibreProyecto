@@ -20,4 +20,8 @@ public class RetrofitClient {
     public static VuelosApiService getApiService() {
         return getClient().create(VuelosApiService.class);
     }
+
+    public static UserApiService getUserApiService() {
+        return getClient().create(UserApiService.class);
+    }
 }

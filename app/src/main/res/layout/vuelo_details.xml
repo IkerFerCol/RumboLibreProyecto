@@ -20,12 +20,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detalle del Vuelo"
-            android:textSize="22sp"
-            android:textStyle="bold"
             android:gravity="center"
             android:paddingBottom="20dp"
-            android:textColor="?attr/colorError" />
+            android:text="Detalles del Vuelo"
+            android:textColor="?attr/colorError"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <!-- Datos generales -->
         <androidx.cardview.widget.CardView
