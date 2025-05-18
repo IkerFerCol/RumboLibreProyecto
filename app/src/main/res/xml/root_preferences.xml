@@ -35,36 +35,6 @@
             android:defaultValue="Usuario"
             android:inputType="textCapWords" />
 
-        <Preference
-            android:title="Cambiar contraseña"
-            android:summary="Establecer una nueva contraseña">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://tudominio.com/cambiar-password" />
-        </Preference>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="Soporte"
-        app:iconSpaceReserved="false">
-
-        <Preference
-            android:title="Soporte"
-            android:summary="Contacta con nosotros">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://tudominio.com/ayuda" />
-        </Preference>
-
-        <Preference
-            android:title="Acerca de"
-            android:summary="Versión y información de la app">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://tudominio.com/acerca-de" />
-        </Preference>
-
     </PreferenceCategory>
 
 </PreferenceScreen>

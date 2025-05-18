@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
             usuario.setEmail(email);
             usuario.setContrasena(contrasena);
 
-            userApiService.register(usuario).enqueue(new Callback<Usuario>() {
+            userApiService.register(usuario).enqueue(new Callback<>() {
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                     if (response.isSuccessful()) {

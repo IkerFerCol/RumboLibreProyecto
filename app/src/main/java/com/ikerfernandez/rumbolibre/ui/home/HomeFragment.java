@@ -27,6 +27,7 @@ import com.ikerfernandez.rumbolibre.MainActivity;
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
 import com.ikerfernandez.rumbolibre.SettingsActivity;
+import com.ikerfernandez.rumbolibre.VueloDetailActivity;
 import com.ikerfernandez.rumbolibre.VuelosApiService;
 import com.ikerfernandez.rumbolibre.Vuelo;
 import com.ikerfernandez.rumbolibre.VueloAdapter;
@@ -40,6 +41,8 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private List<Vuelo> listaVuelos = new ArrayList<>();
     private VueloAdapter vueloAdapter;
+
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,7 +59,6 @@ public class HomeFragment extends Fragment {
         binding.recyclerViewVuelos.setAdapter(vueloAdapter);
 
         fetchVuelos();
-
 
 
 
@@ -83,20 +85,45 @@ public class HomeFragment extends Fragment {
 
         final AlertDialog dialog = builder.create();
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String origen = etOrigen.getText().toString();
-                String destino = etDestino.getText().toString();
-                String aerolinea = etAerolinea.getText().toString();
+        btnBuscar.setOnClickListener(v -> {
+            String origen = etOrigen.getText().toString();
+            String destino = etDestino.getText().toString();
+            String aerolinea = etAerolinea.getText().toString();
 
-                buscarVuelos(origen, destino, aerolinea);
-                dialog.dismiss();
-            }
+            buscarVuelos(origen, destino, aerolinea);
+            dialog.dismiss();
         });
 
         dialog.show();
     }
+
+
+
+    private void obtenerVueloRandom() {
+        VuelosApiService apiService = RetrofitClient.getClient().create(VuelosApiService.class);
+        Call<Vuelo> call = apiService.getVueloRandom();
+
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<Vuelo> call, Response<Vuelo> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Vuelo vueloAleatorio = response.body();
+
+                    Intent intent = new Intent(getContext(), VueloDetailActivity.class);
+                    intent.putExtra("vuelo", vueloAleatorio);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "No se pudo obtener el vuelo random", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Vuelo> call, Throwable t) {
+                Toast.makeText(getContext(), "Error al conectar con el servidor", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void buscarVuelos(String origen, String destino, String aerolinea) {
         VuelosApiService apiService = RetrofitClient.getClient().create(VuelosApiService.class);
@@ -133,7 +160,7 @@ public class HomeFragment extends Fragment {
         VuelosApiService apiService = RetrofitClient.getApiService();
 
         Call<List<Vuelo>> call = apiService.getAllVuelos();
-        call.enqueue(new Callback<List<Vuelo>>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<List<Vuelo>> call, Response<List<Vuelo>> response) {
                 if (response.isSuccessful()) {
@@ -159,6 +186,9 @@ public class HomeFragment extends Fragment {
         });
     }
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -180,6 +210,11 @@ public class HomeFragment extends Fragment {
         }
         if (item.getItemId() == R.id.action_buscar_vuelos) {
             mostrarDialogoBusqueda();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_random_vuelo) {
+            obtenerVueloRandom();
             return true;
         }
         return super.onOptionsItemSelected(item);

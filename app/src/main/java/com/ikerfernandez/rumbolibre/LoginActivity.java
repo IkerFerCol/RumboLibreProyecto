@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             usuario.setEmail(email);
             usuario.setContrasena(contrasena);
 
-            userApiService.login(usuario).enqueue(new Callback<Usuario>() {
+            userApiService.login(usuario).enqueue(new Callback<>() {
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                     if (response.isSuccessful() && response.body() != null) {

@@ -1,6 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+
+    <item
+        android:id="@+id/action_random_vuelo"
+        android:icon="@drawable/randomimage"
+        android:title="Vuelo Random"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/action_buscar_vuelos"
         android:icon="@drawable/search"

@@ -18,4 +18,7 @@ public interface VuelosApiService {
             @Query("ciudadDestino") String ciudadDestino,
             @Query("aerolinea") String aerolinea
     );
+
+    @GET("vuelos/random")
+    Call<Vuelo> getVueloRandom();
 }
