@@ -21,9 +21,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.ikerfernandez.rumbolibre.MainActivity;
+import com.ikerfernandez.rumbolibre.FavoritosApiService;
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
 import com.ikerfernandez.rumbolibre.SettingsActivity;
@@ -41,9 +42,6 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private List<Vuelo> listaVuelos = new ArrayList<>();
     private VueloAdapter vueloAdapter;
-
-
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -187,8 +185,6 @@ public class HomeFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -215,6 +211,10 @@ public class HomeFragment extends Fragment {
 
         if (item.getItemId() == R.id.action_random_vuelo) {
             obtenerVueloRandom();
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_fav){
             return true;
         }
         return super.onOptionsItemSelected(item);

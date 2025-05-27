@@ -4,7 +4,7 @@ package com.ikerfernandez.rumbolibre;
 import java.io.Serializable;
 
 public class Vuelo implements Serializable {
-    private int id;
+    private Long id;
 
     private String ciudadOrigen;
 
@@ -37,7 +37,7 @@ public class Vuelo implements Serializable {
     public Vuelo() {
     }
 
-    public Vuelo(int id, String ciudadOrigen, String ciudadDestino, String aerolinea,
+    public Vuelo(Long id, String ciudadOrigen, String ciudadDestino, String aerolinea,
                  String horaInicioIda, String horaFinIda, String fechaInicioIda,
                  String fechaFinIda, String tiempoIda, String horaInicioVuelta,
                  String horaFinVuelta, String fechaInicioVuelta, String fechaFinVuelta,
@@ -59,11 +59,11 @@ public class Vuelo implements Serializable {
         this.precio = precio;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -24,4 +24,8 @@ public class RetrofitClient {
     public static UserApiService getUserApiService() {
         return getClient().create(UserApiService.class);
     }
+
+    public static FavoritosApiService getFavoritoApiService(){
+        return getClient().create(FavoritosApiService.class);
+    }
 }

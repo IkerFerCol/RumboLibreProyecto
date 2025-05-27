@@ -12,29 +12,30 @@
             android:summary="Cambiar entre tema claro y oscuro"
             android:defaultValue="false" />
 
-        <ListPreference
-            android:key="idioma"
-            android:title="Idioma"
-            android:summary="Selecciona el idioma de la aplicación"
-            android:dialogTitle="Elegir idioma"
-            android:defaultValue="es"
-            android:entries="@array/idioma_entradas"
-            android:entryValues="@array/idioma_valores" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="Información de la App"
+        app:iconSpaceReserved="false">
+        <Preference
+            android:key="version"
+            android:summary="1.0.0"
+            android:title="Versión" />
+        <Preference
+            android:key="acercade"
+            android:summary="Información de la aplicación"
+            android:title="Acerca de" />
+        <Preference
+            android:key="contacto"
+            android:summary="Contacta con nosotros"
+            android:title="Contacto" />
+    </PreferenceCategory>
+    <PreferenceCategory
         android:title="Cuenta"
         app:iconSpaceReserved="false">
-
-        <EditTextPreference
-            android:key="nombre_usuario"
-            android:title="Nombre de usuario"
-            android:dialogTitle="Cambiar nombre de usuario"
-            android:dialogMessage="Introduce tu nuevo nombre de usuario"
-            android:defaultValue="Usuario"
-            android:inputType="textCapWords" />
-
+        <Preference
+            android:key="cerrar_sesion"
+            android:title="Cerrar Sesión" />
     </PreferenceCategory>
 
 </PreferenceScreen>
