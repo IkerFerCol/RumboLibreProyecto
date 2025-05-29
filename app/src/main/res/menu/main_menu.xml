@@ -3,11 +3,6 @@
 
 
     <item
-        android:id="@+id/action_fav"
-        android:icon="@drawable/red_star"
-        android:title="Favoritos"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/action_random_vuelo"
         android:icon="@drawable/randomimage"
         android:title="Vuelo Random"

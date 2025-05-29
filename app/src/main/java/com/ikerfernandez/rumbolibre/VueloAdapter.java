@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,17 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ikerfernandez.rumbolibre.databinding.VueloDetailsBinding;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHolder> {
 
-    private final List<Vuelo> vuelos;
+    private List<Vuelo> vuelos;
     private Context context;
+    private Set<Long> idsFavoritos;
+    private Long usuarioId;
+    private boolean modoFavoritos;
+
 
     public VueloAdapter(List<Vuelo> vuelos, Context context) {
         this.vuelos = vuelos;
         this.context = context;
     }
+
 
     @NonNull
     @Override
@@ -46,6 +58,9 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
             intent.putExtra("vuelo", vuelo);
             context.startActivity(intent);
         });
+
+
+
     }
 
     @Override
@@ -61,7 +76,7 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
 
     public static class VueloViewHolder extends RecyclerView.ViewHolder {
         TextView tvOrigen, tvDestino, tvAerolinea, tvTiempo; //, tvAerolinea, tvPrecio, tvTiempo;
-
+        CheckBox cbFavorito;
         public VueloViewHolder(@NonNull View itemView) {
             super(itemView);
             tvOrigen = itemView.findViewById(R.id.tvVueloOrigen);
@@ -69,6 +84,7 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
             tvAerolinea = itemView.findViewById(R.id.tvAerolinea);
             // tvPrecio = itemView.findViewById(R.id.tvPrecio);
             tvTiempo = itemView.findViewById(R.id.tvTiempo);
+            cbFavorito = itemView.findViewById(R.id.favoritoCheck);
         }
     }
 }

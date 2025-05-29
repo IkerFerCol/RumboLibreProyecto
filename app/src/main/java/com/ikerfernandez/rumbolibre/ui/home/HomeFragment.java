@@ -1,7 +1,9 @@
 package com.ikerfernandez.rumbolibre.ui.home;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.ikerfernandez.rumbolibre.FavoritosApiService;
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
 import com.ikerfernandez.rumbolibre.SettingsActivity;
@@ -35,6 +35,7 @@ import com.ikerfernandez.rumbolibre.VueloAdapter;
 import com.ikerfernandez.rumbolibre.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -214,9 +215,6 @@ public class HomeFragment extends Fragment {
             return true;
         }
 
-        if (item.getItemId() == R.id.action_fav){
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 }
