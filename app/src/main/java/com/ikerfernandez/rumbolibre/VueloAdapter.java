@@ -84,7 +84,6 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
             tvAerolinea = itemView.findViewById(R.id.tvAerolinea);
             // tvPrecio = itemView.findViewById(R.id.tvPrecio);
             tvTiempo = itemView.findViewById(R.id.tvTiempo);
-            cbFavorito = itemView.findViewById(R.id.favoritoCheck);
         }
     }
 }

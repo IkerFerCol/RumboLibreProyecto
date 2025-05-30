@@ -1,7 +1,9 @@
 package com.ikerfernandez.rumbolibre;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("usuarioNombre", response.body().getNombreUsuario());
+                        SharedPreferences prefs = getSharedPreferences("datos_usuario", MODE_PRIVATE);
+                        prefs.edit().putString("usuarioNombre", response.body().getNombreUsuario()).apply();
+                        Log.d("USUARIO", response.body().getNombreUsuario());
                         startActivity(intent);
                         finish();
                     } else {
