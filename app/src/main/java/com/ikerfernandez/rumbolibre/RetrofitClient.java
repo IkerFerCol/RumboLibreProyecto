@@ -28,4 +28,8 @@ public class RetrofitClient {
     public static MensajeApiService getMensajeApiService() {
         return getClient().create(MensajeApiService.class);
     }
+
+    public static ReservaApiService getReservaApiService() {
+        return getClient().create(ReservaApiService.class);
+    }
 }
