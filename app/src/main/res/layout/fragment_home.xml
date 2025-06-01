@@ -8,4 +8,5 @@
     android:layout_marginBottom="?attr/actionBarSize"
     android:clipToPadding="false"
     android:paddingBottom="16dp"
+    android:background="@drawable/wallpaper2"
     android:paddingTop="16dp" />

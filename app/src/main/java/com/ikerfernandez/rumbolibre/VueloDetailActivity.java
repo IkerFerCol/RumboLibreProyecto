@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,6 +77,12 @@ public class VueloDetailActivity extends AppCompatActivity {
 
 
         btnReservar.setOnClickListener(v -> {
+            Log.d("USER", nombreUsuario);
+            if (nombreUsuario.equals("Invitado")) {
+                Toast.makeText(this, "Debes iniciar sesión para reservar un vuelo", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             new AlertDialog.Builder(this)
                     .setTitle("Confirmar reserva")
                     .setMessage("¿Estás seguro de que quieres reservar este vuelo?")
@@ -85,6 +92,7 @@ public class VueloDetailActivity extends AppCompatActivity {
                     .setNegativeButton("Cancelar", null)
                     .show();
         });
+
     }
 
     private void hacerReserva() {

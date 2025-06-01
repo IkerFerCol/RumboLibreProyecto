@@ -1,6 +1,7 @@
 package com.ikerfernandez.rumbolibre;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -24,8 +25,17 @@ public class AuthActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(v ->
                 startActivity(new Intent(this, LoginActivity.class)));
 
-        btnInvitado.setOnClickListener(v ->
-                startActivity(new Intent(this, MainActivity.class)));
+        btnInvitado.setOnClickListener(v -> {
+            SharedPreferences prefs = getSharedPreferences("datos_usuario", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("usuarioNombre", "Invitado");
+            editor.apply();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 }
 

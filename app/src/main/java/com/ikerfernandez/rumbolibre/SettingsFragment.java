@@ -71,8 +71,6 @@ public class SettingsFragment extends PreferenceFragmentCompat
                     "\n" +
                     "Búsqueda de Vuelos: Encuentra vuelos de diferentes aerolíneas y compara precios en tiempo real. Utiliza filtros para ajustar tus preferencias de búsqueda, como origen, destino, fechas y aerolíneas.    \n" +
                     "\n" +
-                    "Favoritos: Guarda tus vuelos preferidos y accede a ellos fácilmente. La función de favoritos te permite tener a mano las opciones que más te interesan, facilitando la planificación de tus viajes.    \n" +
-                    "\n" +
                     "Interfaz Amigable: Diseñada pensando en el usuario, la aplicación ofrece una experiencia fluida y agradable. Navega sin esfuerzo entre las diferentes secciones y encuentra lo que necesitas en cuestión de segundos.    \n" +
                     "\n" +
                     "Modo Oscuro: Para aquellos que prefieren una experiencia visual más suave, RumboLibre incluye un modo oscuro que reduce la fatiga visual y mejora la legibilidad en condiciones de poca luz.    ");
