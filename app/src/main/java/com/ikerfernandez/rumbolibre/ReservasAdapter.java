@@ -50,32 +50,42 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         if (vuelo != null) {
             holder.tvOrigen.setText(vuelo.getCiudadOrigen());
             holder.tvDestino.setText(vuelo.getCiudadDestino());
+            holder.tvFechaIda.setText(vuelo.getFechaInicioIda());
+            holder.tvTiempo.setText(vuelo.getTiempoIda());
         }
 
         holder.btnCancelar.setOnClickListener(v -> {
             int currentPosition = holder.getAdapterPosition();
             if (currentPosition == RecyclerView.NO_POSITION) return;
 
-            Reserva reservaActual = listaReservas.get(currentPosition);
-            Call<Void> call = apiService.eliminarReserva(reservaActual.getId());
-            call.enqueue(new Callback<>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    if (response.isSuccessful()) {
-                        listaReservas.remove(currentPosition);
-                        notifyItemRemoved(currentPosition);
-                        Toast.makeText(context, "Reserva cancelada", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, "Error al cancelar", Toast.LENGTH_SHORT).show();
-                    }
-                }
+            new android.app.AlertDialog.Builder(context)
+                    .setTitle("Cancelar reserva")
+                    .setMessage("¿Estás seguro de que quieres cancelar esta reserva?")
+                    .setPositiveButton("Sí", (dialog, which) -> {
+                        Reserva reservaActual = listaReservas.get(currentPosition);
+                        Call<Void> call = apiService.eliminarReserva(reservaActual.getId());
+                        call.enqueue(new Callback<>() {
+                            @Override
+                            public void onResponse(Call<Void> call, Response<Void> response) {
+                                if (response.isSuccessful()) {
+                                    listaReservas.remove(currentPosition);
+                                    notifyItemRemoved(currentPosition);
+                                    Toast.makeText(context, "Reserva cancelada", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "Error al cancelar", Toast.LENGTH_SHORT).show();
+                                }
+                            }
 
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-                    Toast.makeText(context, "Error de red", Toast.LENGTH_SHORT).show();
-                }
-            });
+                            @Override
+                            public void onFailure(Call<Void> call, Throwable t) {
+                                Toast.makeText(context, "Error de red", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         });
+
     }
 
 
@@ -86,13 +96,15 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
     }
 
     public static class ReservaViewHolder extends RecyclerView.ViewHolder {
-        TextView tvOrigen, tvDestino;
+        TextView tvOrigen, tvDestino, tvFechaIda, tvTiempo;
         Button btnCancelar;
 
         public ReservaViewHolder(@NonNull View itemView) {
             super(itemView);
             tvOrigen = itemView.findViewById(R.id.tvVueloOrigen);
             tvDestino = itemView.findViewById(R.id.tvVueloDestino);
+            tvFechaIda = itemView.findViewById(R.id.fechaInicioIda);
+            tvTiempo = itemView.findViewById(R.id.tiempoIda);
             btnCancelar = itemView.findViewById(R.id.btnCancelarReserva);
         }
     }
