@@ -9,6 +9,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -30,6 +33,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
         userApiService = RetrofitClient.getClient().create(UserApiService.class);
         sharedPreferences = getPreferenceManager().getSharedPreferences();
+
     }
 
     @Override
@@ -85,11 +89,16 @@ public class SettingsFragment extends PreferenceFragmentCompat
         }
 
         if ("cerrar_sesion".equals(key)) {
-            startActivity(new Intent(getActivity(), AuthActivity.class));
+
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_settingsFragment3_to_authFragment);
+            return true;
         }
+
 
         return super.onPreferenceTreeClick(preference);
     }
+
 
     private void mostrarDialogo(String titulo, String mensaje) {
         new AlertDialog.Builder(requireContext())

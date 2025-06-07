@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceManager;
@@ -24,6 +26,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private View bottomButtons;
 
 
 
@@ -46,18 +49,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        bottomButtons = findViewById(R.id.nav_view);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_activity_main);
+        navController = navHostFragment.getNavController();
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.authFragment || destination.getId() == R.id.loginFragment || destination.getId() == R.id.registerFragment) {
+                bottomButtons.setVisibility(View.GONE);
+            } else {
+                bottomButtons.setVisibility(View.VISIBLE);
+            }
+        });
 
-    }
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(newBase);
-        String idioma = prefs.getString("idioma", "es");
-        Locale newLocale = new Locale(idioma);
-        Locale.setDefault(newLocale);
-        Configuration config = new Configuration();
-        config.setLocale(newLocale);
-        Context context = newBase.createConfigurationContext(config);
-        super.attachBaseContext(context);
     }
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class AuthActivity extends AppCompatActivity {
     private Button btnRegistro, btnLogin, btnInvitado;

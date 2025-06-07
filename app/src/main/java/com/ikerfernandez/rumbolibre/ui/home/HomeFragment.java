@@ -28,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
 import com.ikerfernandez.rumbolibre.SettingsActivity;
+//import com.ikerfernandez.rumbolibre.VueloDetailActivity;
 import com.ikerfernandez.rumbolibre.VueloDetailActivity;
 import com.ikerfernandez.rumbolibre.VuelosApiService;
 import com.ikerfernandez.rumbolibre.Vuelo;
