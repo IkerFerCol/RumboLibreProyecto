@@ -1,4 +1,6 @@
-package com.ikerfernandez.rumbolibre;
+package com.ikerfernandez.rumbolibre.Servicios;
+
+import com.ikerfernandez.rumbolibre.Modelos.Mensaje;
 
 import java.util.List;
 

@@ -1,9 +1,7 @@
-package com.ikerfernandez.rumbolibre;
+package com.ikerfernandez.rumbolibre.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +9,14 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ikerfernandez.rumbolibre.databinding.VueloDetailsBinding;
+import com.ikerfernandez.rumbolibre.Modelos.Vuelo;
+import com.ikerfernandez.rumbolibre.R;
+import com.ikerfernandez.rumbolibre.VueloDetailActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHolder> {
 
@@ -40,6 +33,7 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
     }
 
 
+//    ### Infla el diseño de cada fila de vuelo (lv_vuelos_row) y crea el ViewHolder ###
     @NonNull
     @Override
     public VueloViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,13 +42,13 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
         return new VueloViewHolder(view);
     }
 
+//    ### Muestra los datos del vuelo (origen, destino, aerolínea, tiempo) y abre los detalles al pulsar el item ###
     @Override
     public void onBindViewHolder(@NonNull VueloViewHolder holder, int position) {
         Vuelo vuelo = vuelos.get(position);
         holder.tvOrigen.setText(vuelo.getCiudadOrigen());
         holder.tvDestino.setText(vuelo.getCiudadDestino());
         holder.tvAerolinea.setText(vuelo.getAerolinea());
-        // holder.tvPrecio.setText(String.format("€%.2f", vuelo.getPrecio()));
         holder.tvTiempo.setText(vuelo.getTiempoIda());
 
         holder.itemView.setOnClickListener(v -> {
@@ -72,21 +66,21 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.VueloViewHol
         return vuelos.size();
     }
 
+//    ### Reemplaza la lista de vuelos actual con una nueva y actualiza la vista ###
     public void actualizarLista(List<Vuelo> nuevosVuelos) {
         this.vuelos.clear();
         this.vuelos.addAll(nuevosVuelos);
         notifyDataSetChanged();
     }
 
+//    ### Contiene las referencias a los elementos visuales de cada item (TextViews para origen, destino, aerolínea, tiempo) ###
     public static class VueloViewHolder extends RecyclerView.ViewHolder {
-        TextView tvOrigen, tvDestino, tvAerolinea, tvTiempo; //, tvAerolinea, tvPrecio, tvTiempo;
-        CheckBox cbFavorito;
+        TextView tvOrigen, tvDestino, tvAerolinea, tvTiempo;
         public VueloViewHolder(@NonNull View itemView) {
             super(itemView);
             tvOrigen = itemView.findViewById(R.id.tvVueloOrigen);
             tvDestino = itemView.findViewById(R.id.tvVueloDestino);
             tvAerolinea = itemView.findViewById(R.id.tvAerolinea);
-            // tvPrecio = itemView.findViewById(R.id.tvPrecio);
             tvTiempo = itemView.findViewById(R.id.tvTiempo);
         }
     }

@@ -1,4 +1,4 @@
-package com.ikerfernandez.rumbolibre;
+package com.ikerfernandez.rumbolibre.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.ikerfernandez.rumbolibre.Modelos.Reserva;
+import com.ikerfernandez.rumbolibre.Modelos.Vuelo;
+import com.ikerfernandez.rumbolibre.R;
+import com.ikerfernandez.rumbolibre.Servicios.ReservaApiService;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,6 +37,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         this.apiService = apiService;
     }
 
+//    ### Infla el layout reserva_item.xml y crea el ViewHolder ###
     @NonNull
     @Override
     public ReservaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,6 +46,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         return new ReservaViewHolder(vista);
     }
 
+//    ### Asigna los datos del vuelo asociado a la reserva y gestiona el botón de cancelar ###
     @Override
     public void onBindViewHolder(@NonNull ReservaViewHolder holder, int position) {
         Reserva reserva = listaReservas.get(position);
@@ -58,10 +64,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
             int currentPosition = holder.getAdapterPosition();
             if (currentPosition == RecyclerView.NO_POSITION) return;
 
-            new android.app.AlertDialog.Builder(context)
-                    .setTitle("Cancelar reserva")
-                    .setMessage("¿Estás seguro de que quieres cancelar esta reserva?")
-                    .setPositiveButton("Sí", (dialog, which) -> {
+            new android.app.AlertDialog.Builder(context).setTitle("Cancelar reserva").setMessage("¿Estás seguro de que quieres cancelar esta reserva?").setPositiveButton("Sí", (dialog, which) -> {
                         Reserva reservaActual = listaReservas.get(currentPosition);
                         Call<Void> call = apiService.eliminarReserva(reservaActual.getId());
                         call.enqueue(new Callback<>() {
@@ -95,6 +98,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         return listaReservas.size();
     }
 
+//    ### Guarda referencias a los elementos visuales del item: origen, destino, fecha, duración y botón ###
     public static class ReservaViewHolder extends RecyclerView.ViewHolder {
         TextView tvOrigen, tvDestino, tvFechaIda, tvTiempo;
         Button btnCancelar;

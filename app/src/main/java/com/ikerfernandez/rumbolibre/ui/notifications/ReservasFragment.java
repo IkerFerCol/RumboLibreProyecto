@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ikerfernandez.rumbolibre.R;
-import com.ikerfernandez.rumbolibre.Reserva;
-import com.ikerfernandez.rumbolibre.ReservaApiService;
-import com.ikerfernandez.rumbolibre.ReservasAdapter;
+import com.ikerfernandez.rumbolibre.Modelos.Reserva;
+import com.ikerfernandez.rumbolibre.Servicios.ReservaApiService;
+import com.ikerfernandez.rumbolibre.Adapters.ReservasAdapter;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
-import com.ikerfernandez.rumbolibre.Vuelo;
-import com.ikerfernandez.rumbolibre.VuelosApiService;
+import com.ikerfernandez.rumbolibre.Modelos.Vuelo;
+import com.ikerfernandez.rumbolibre.Servicios.VuelosApiService;
 
 import java.util.ArrayList;
 import java.util.List;

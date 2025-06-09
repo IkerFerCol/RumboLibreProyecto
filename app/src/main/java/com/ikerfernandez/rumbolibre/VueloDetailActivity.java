@@ -1,7 +1,5 @@
 package com.ikerfernandez.rumbolibre;
 
-import static android.content.Intent.getIntent;
-
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
-import androidx.preference.PreferenceManager;
+
+import com.ikerfernandez.rumbolibre.Modelos.Reserva;
+import com.ikerfernandez.rumbolibre.Modelos.Vuelo;
+import com.ikerfernandez.rumbolibre.Servicios.ReservaApiService;
 
 import retrofit2.Call;
 import retrofit2.Callback;

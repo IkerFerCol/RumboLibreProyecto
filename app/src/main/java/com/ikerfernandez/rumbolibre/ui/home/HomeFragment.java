@@ -1,9 +1,7 @@
 package com.ikerfernandez.rumbolibre.ui.home;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,13 +28,12 @@ import com.ikerfernandez.rumbolibre.RetrofitClient;
 import com.ikerfernandez.rumbolibre.SettingsActivity;
 //import com.ikerfernandez.rumbolibre.VueloDetailActivity;
 import com.ikerfernandez.rumbolibre.VueloDetailActivity;
-import com.ikerfernandez.rumbolibre.VuelosApiService;
-import com.ikerfernandez.rumbolibre.Vuelo;
-import com.ikerfernandez.rumbolibre.VueloAdapter;
+import com.ikerfernandez.rumbolibre.Servicios.VuelosApiService;
+import com.ikerfernandez.rumbolibre.Modelos.Vuelo;
+import com.ikerfernandez.rumbolibre.Adapters.VueloAdapter;
 import com.ikerfernandez.rumbolibre.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class HomeFragment extends Fragment {

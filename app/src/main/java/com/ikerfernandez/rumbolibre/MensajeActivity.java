@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ikerfernandez.rumbolibre.Adapters.MensajeAdapter;
+import com.ikerfernandez.rumbolibre.Modelos.Mensaje;
+import com.ikerfernandez.rumbolibre.Servicios.MensajeApiService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +88,7 @@ public class MensajeActivity extends AppCompatActivity {
         });
     }
 
+//    ### Recupera todos los mensajes del backend y actualiza el RecyclerView con la nueva lista ###
     private void cargarMensajes() {
         mensajeApiService.getMensajes().enqueue(new Callback<List<Mensaje>>() {
             @Override

@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment3"
-        android:name="com.ikerfernandez.rumbolibre.SettingsFragment"
+        android:name="com.ikerfernandez.rumbolibre.Fragments.SettingsFragment"
         android:label="SettingsFragment" >
         <action
             android:id="@+id/action_settingsFragment3_to_authFragment"

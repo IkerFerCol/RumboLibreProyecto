@@ -1,7 +1,6 @@
 package com.ikerfernandez.rumbolibre.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,11 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.ikerfernandez.rumbolibre.MainActivity;
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
-import com.ikerfernandez.rumbolibre.UserApiService;
-import com.ikerfernandez.rumbolibre.Usuario;
+import com.ikerfernandez.rumbolibre.Servicios.UserApiService;
+import com.ikerfernandez.rumbolibre.Modelos.Usuario;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +34,7 @@ public class LoginFragment extends Fragment {
 
 
 
+//    ### Carga la interfaz desde el layout activity_login.xml, que incluye los campos de email, contraseña y el botón de login ###
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -44,6 +43,7 @@ public class LoginFragment extends Fragment {
         return inflater.inflate(R.layout.activity_login, container, false);
     }
 
+//    ### Inicializa componentes (EditText y Button) y el servicio UserApiService para la API ###
     @Override
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {

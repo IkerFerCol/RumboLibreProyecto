@@ -16,8 +16,8 @@ import androidx.navigation.Navigation;
 
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
-import com.ikerfernandez.rumbolibre.UserApiService;
-import com.ikerfernandez.rumbolibre.Usuario;
+import com.ikerfernandez.rumbolibre.Servicios.UserApiService;
+import com.ikerfernandez.rumbolibre.Modelos.Usuario;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +29,7 @@ public class RegisterFragment extends Fragment {
     private Button btnRegistrar, btnGoToLogin;
     private UserApiService userApiService;
 
-
+// ### Infla el layout XML activity_register como la vista del fragmento ###
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -38,6 +38,7 @@ public class RegisterFragment extends Fragment {
         return inflater.inflate(R.layout.activity_register, container, false);
     }
 
+//    ### Inicializa los campos de texto, botones y el servicio de la API ###
     @Override
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {

@@ -17,9 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ikerfernandez.rumbolibre.Mensaje;
-import com.ikerfernandez.rumbolibre.MensajeAdapter;
-import com.ikerfernandez.rumbolibre.MensajeApiService;
+import com.ikerfernandez.rumbolibre.Modelos.Mensaje;
+import com.ikerfernandez.rumbolibre.Adapters.MensajeAdapter;
+import com.ikerfernandez.rumbolibre.Servicios.MensajeApiService;
 import com.ikerfernandez.rumbolibre.R;
 import com.ikerfernandez.rumbolibre.RetrofitClient;
 

@@ -1,6 +1,6 @@
-package com.ikerfernandez.rumbolibre;
+package com.ikerfernandez.rumbolibre.Servicios;
 
-import com.ikerfernandez.rumbolibre.Vuelo;
+import com.ikerfernandez.rumbolibre.Modelos.Vuelo;
 
 import java.util.List;
 

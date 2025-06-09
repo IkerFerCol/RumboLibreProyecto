@@ -23,6 +23,7 @@ public class AuthFragment extends Fragment {
     private Button btnRegistro, btnLogin, btnInvitado;
 
 
+//     ### Infla el layout activity_auth.xml, que contiene los botones de Registro, Login e Invitado ###
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,6 +32,7 @@ public class AuthFragment extends Fragment {
         return inflater.inflate(R.layout.activity_auth, container, false);
     }
 
+//   ### Asocia los botones del layout con sus variables y les asigna funcionalidades ###
     @Override
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {

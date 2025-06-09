@@ -1,25 +1,18 @@
-package com.ikerfernandez.rumbolibre;
+package com.ikerfernandez.rumbolibre.Fragments;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import java.util.Locale;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.ikerfernandez.rumbolibre.R;
+import com.ikerfernandez.rumbolibre.RetrofitClient;
+import com.ikerfernandez.rumbolibre.Servicios.UserApiService;
 
 public class SettingsFragment extends PreferenceFragmentCompat
 
@@ -28,6 +21,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
     private UserApiService userApiService;
 
 
+//    ### Carga las preferencias desde root_preferences.xml y configura el servicio de API y preferencias compartidas ###
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -36,6 +30,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 
     }
 
+//    ### Registra un listener para detectar cambios en las preferencias cuando el fragmento esté activo ###
     @Override
     public void onResume() {
         super.onResume();
@@ -43,6 +38,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
                 .registerOnSharedPreferenceChangeListener(this);
     }
 
+//    ### Elimina el listener cuando el fragmento deja de estar activo ###
     @Override
     public void onPause() {
         super.onPause();
@@ -50,6 +46,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
                 .unregisterOnSharedPreferenceChangeListener(this);
     }
 
+//    ### Se ejecuta cuando cambia alguna preferencia ###
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals("modo_oscuro")) {
@@ -59,6 +56,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         }
     }
 
+//    ### Detecta clics en las opciones del menú de ajustes ###
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         String key = preference.getKey();
@@ -99,7 +97,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
         return super.onPreferenceTreeClick(preference);
     }
 
-
+// ### Muestra un cuadro de diálogo con un título y mensaje determinado ###
     private void mostrarDialogo(String titulo, String mensaje) {
         new AlertDialog.Builder(requireContext())
                 .setTitle(titulo)

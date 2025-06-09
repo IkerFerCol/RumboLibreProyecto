@@ -1,4 +1,4 @@
-package com.ikerfernandez.rumbolibre;
+package com.ikerfernandez.rumbolibre.Modelos;
 
 
 import java.io.Serializable;
